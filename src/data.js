@@ -4,11 +4,11 @@ export const data = () =>
   );
 
 export const person = {
-  firstName:
-    "<!DOCTYPE html> <html> <head> <title>My Website</title> </head> <body> <h1>Welcome to my website</h1> <p>Here is some text.</p> <img src=myimage.jpg alt=My Image> </body> </html>".split(
+  1:
+    "<!DOCTYPE html> <html> <head> <title> My Website </title> </head> <body> <h1> Welcome to my website </h1> <p> Here is some text. </p> <img src=myimage.jpg alt=My Image> </body> </html>".split(
       " "
     ),
-  lastName: "Doe",
-  age: 50,
-  eyeColor: "blue",
+  2: "Doe mama nigga bitch".split(" "),
+  3: "happy birthday nigga have a splendours night".split(" "),
+  4: "blue sky makes us wet as well as dry".split(" "),
 };

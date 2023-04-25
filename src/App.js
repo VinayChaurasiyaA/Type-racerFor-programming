@@ -13,13 +13,17 @@ function App() {
   const [startCounting, setStartCounting] = useState(false);
 
   // todo : take random number of id from 1-Object.keys(person).length and then show that data only
-  const cloud = useRef(person.firstName);
-  // console.log(useRef(Object.keys(person).length))
-  console.log(useRef(person.firstName))
+
+  const len =
+    Math.floor(Math.random() * useRef(Object.keys(person).length).current) || 1;
+
+  const cloud = useRef(person[len]);
+
+  // console.log(len);
 
   const processInput = (value) => {
     if (activeIndex === cloud.current.length) {
-      setStartCounting(false)
+      setStartCounting(false);
       return;
     }
     if (!startCounting) {
@@ -58,18 +62,21 @@ function App() {
               correctWord={correctWordArray.filter(Boolean).length}
             />
           </div>
-          <p>
-            {cloud.current.map((word, index) => {
-              return (
-                <Word
-                  key={index}
-                  text={word}
-                  active={index === activeIndex}
-                  correct={correctWordArray[index]}
-                />
-              );
-            })}
-          </p>
+          <div className="word-show">
+            <p className="word">
+              {cloud.current.map((word, index) => {
+                return (
+                  <Word
+                    className="word-show"
+                    key={index}
+                    text={word}
+                    active={index === activeIndex}
+                    correct={correctWordArray[index]}
+                  />
+                );
+              })}
+            </p>
+          </div>
           <input
             className="input"
             type="text"

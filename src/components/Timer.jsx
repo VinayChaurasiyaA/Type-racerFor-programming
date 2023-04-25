@@ -19,7 +19,7 @@ const Timer = ({ startCounting, correctWord }) => {
   return (
     <div>
       <div>
-        <span>Time : {timeElapsed}</span>
+        <span>Time : {timeElapsed} sec</span>
       </div>
       <span>Speed : {(correctWord / minutes || 0).toFixed(2)} WPM</span>
     </div>
