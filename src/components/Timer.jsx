@@ -1,8 +1,22 @@
 import React, { useEffect, useState } from "react";
 
-const Timer = ({ startCounting, correctWord }) => {
+const Timer = ({ startCounting, correctWord, setStartCounting ,setUserInput}) => {
   const [timeElapsed, setTimeElapsed] = useState(0);
-
+  // const [oldTime, setOldTime] = useState();
+  const [isActive , setIsActive] = useState(false)
+  const handle = (value) => {
+    // console.log("click")
+    // console.log(timeElapsed)
+    if (value === timeElapsed) {
+      // console.log("done")
+      setUserInput("Time up!")
+      setStartCounting(false);
+      // return;
+    }
+  };
+  const handleClick = () => {
+    return setIsActive(!isActive)
+  }
   useEffect(() => {
     let id;
     if (startCounting) {
@@ -18,10 +32,23 @@ const Timer = ({ startCounting, correctWord }) => {
   const minutes = timeElapsed / 60;
   return (
     <div>
-      <div>
+      <div className="time">
         <span>Time : {timeElapsed} sec</span>
       </div>
-      <span>Speed : {(correctWord / minutes || 0).toFixed(2)} WPM</span>
+      <div className="speed">
+        <span>Speed : {(correctWord / minutes || 0).toFixed(2)} WPM</span>
+      </div>
+      <div className="buttons">
+        <button onClick={handle(30)} className="btn">
+          <span onClick={handleClick} style={{color : isActive ? 'red' : 'black'}}>30 </span>
+        </button>
+        <button onClick={handle(60)} className="btn">
+          <span onClick={handleClick} style={{color : isActive ? 'red' : 'black'}}>60 </span>
+        </button>
+        <button onClick={handle(500)} className="btn">
+          <span onClick={handleClick} style={{color : isActive ? 'red' : 'black'}}>No limit</span>
+        </button>
+      </div>
     </div>
   );
 };

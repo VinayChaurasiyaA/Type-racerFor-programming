@@ -54,12 +54,14 @@ function App() {
   return (
     <>
       <div className="app">
-        <h2>Typing checker</h2>
+        <h2 className="header">Typing checker</h2>
         <div className="container">
           <div>
             <Timer
+            setStartCounting={setStartCounting}
               startCounting={startCounting}
               correctWord={correctWordArray.filter(Boolean).length}
+              setUserInput={setUserInput}
             />
           </div>
           <div className="word-show">

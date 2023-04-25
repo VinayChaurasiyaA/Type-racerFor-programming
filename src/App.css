@@ -6,6 +6,9 @@ html {
 body {
   width: 100%;
 }
+.header {
+  font-size: 4rem;
+}
 .app {
   width: 100%;
   background-color: antiquewhite;
@@ -15,25 +18,65 @@ body {
   align-items: center;
 }
 .container {
-  margin-top: 10%;
+  margin-top: 4%;
+}
+input {
+  margin: 0;
+  padding: 0;
 }
 .input {
+  background-color: transparent;
   width: 100%;
-  /* margin: ; */
-  /* padding: 1rem 20%; */
-  outline: none;
-  border: none;
+  margin:1rem 0 ;
+  padding: 1rem 0 0;
+  outline: 0;
+  border: 0;
+  border-bottom: 1px solid black;
+  font-size: larger;
 }
 .correct {
-  color: green;
+  color: rgb(25, 141, 25);
 }
 .incorrect {
   color: red;
 }
 .word-show {
+
+  border: none;
+  outline: none;
+  overflow: hidden;
+  margin-top: 2rem;
   background-color: rgb(51, 15, 15);
-  max-width: 30rem;
+  max-width: 40rem;
+  padding: 2rem;
 }
 .word {
   color:white
+}
+.time {
+  font-size: 1.4rem;
+}
+.speed {
+  font-size: 1.3rem;
+}
+.buttons {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.btn {
+  background-color: transparent;
+  font-size: 1rem;
+  margin: 1rem;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+}
+.btn:hover {
+  border-bottom: 1px solid red;
+  cursor: pointer;
+}
+.btn:active {
+  border-bottom: 1px solid red;
+  color: red
 }
