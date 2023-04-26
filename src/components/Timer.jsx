@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from "react";
 
-const Timer = ({ startCounting, correctWord, setStartCounting ,setUserInput}) => {
+const Timer = ({
+  startCounting,
+  correctWord,
+  setStartCounting,
+  setUserInput,
+}) => {
   const [timeElapsed, setTimeElapsed] = useState(0);
   // const [oldTime, setOldTime] = useState();
-  const [isActive , setIsActive] = useState(false)
+  const [isActive, setIsActive] = useState(false);
   const handle = (value) => {
-    // console.log("click")
-    // console.log(timeElapsed)
+    console.log(value)
     if (value === timeElapsed) {
       // console.log("done")
-      setUserInput("Time up!")
+      setUserInput("Time up!");
       setStartCounting(false);
-      // return;
+      
     }
   };
   const handleClick = () => {
-    return setIsActive(!isActive)
-  }
+    return setIsActive(!isActive);
+  };
   useEffect(() => {
     let id;
     if (startCounting) {
@@ -39,14 +43,29 @@ const Timer = ({ startCounting, correctWord, setStartCounting ,setUserInput}) =>
         <span>Speed : {(correctWord / minutes || 0).toFixed(2)} WPM</span>
       </div>
       <div className="buttons">
+        <button onClick={handle(500)} className="btn">
+          <span
+            onClick={handleClick}
+            style={{ color: isActive ? "red" : "black" }}
+          >
+            No limit
+          </span>
+        </button>
         <button onClick={handle(30)} className="btn">
-          <span onClick={handleClick} style={{color : isActive ? 'red' : 'black'}}>30 </span>
+          <span
+            onClick={handleClick}
+            style={{ color: isActive ? "red" : "black" }}
+          >
+            30{" "}
+          </span>
         </button>
         <button onClick={handle(60)} className="btn">
-          <span onClick={handleClick} style={{color : isActive ? 'red' : 'black'}}>60 </span>
-        </button>
-        <button onClick={handle(500)} className="btn">
-          <span onClick={handleClick} style={{color : isActive ? 'red' : 'black'}}>No limit</span>
+          <span
+            onClick={handleClick}
+            style={{ color: isActive ? "red" : "black" }}
+          >
+            60{" "}
+          </span>
         </button>
       </div>
     </div>

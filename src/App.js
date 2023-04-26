@@ -11,6 +11,7 @@ function App() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [correctWordArray, setCorrectWordArray] = useState([]);
   const [startCounting, setStartCounting] = useState(false);
+  const [mode, setMode] = useState("Light");
 
   // todo : take random number of id from 1-Object.keys(person).length and then show that data only
 
@@ -51,19 +52,25 @@ function App() {
       setUserInput(value);
     }
   };
+  const toggleMode = () => {
+    mode === "Light" ? setMode("Dark") : setMode("Light");
+  };
   return (
     <>
-      <div className="app">
-        <h2 className="header">Typing checker</h2>
+      <div className={`${mode === "Light" ? "app" : "dark-app"}`}>
+        <h2 className={`${mode === "Light" ? "header" : "dark-header"}`}>
+          Typing checker
+        </h2>
+        <div className="switch-box">
+          <h4 className={`${mode === "Light" ? "modes" : "dark-mode"}`}>
+            Mode: {mode === "Light" ? "Normal" : "Developer"}
+          </h4>
+          <label class="switch">
+            <input type="checkbox" onClick={toggleMode} />
+            <span class="slider round"></span>
+          </label>
+        </div>
         <div className="container">
-          <div>
-            <Timer
-            setStartCounting={setStartCounting}
-              startCounting={startCounting}
-              correctWord={correctWordArray.filter(Boolean).length}
-              setUserInput={setUserInput}
-            />
-          </div>
           <div className="word-show">
             <p className="word">
               {cloud.current.map((word, index) => {
@@ -79,12 +86,21 @@ function App() {
               })}
             </p>
           </div>
+
           <input
-            className="input"
+            className={`${mode === "input" ? "modes" : "dark-input"}`}
             type="text"
             value={userInput}
             onChange={(e) => processInput(e.target.value)}
           />
+          <div>
+            <Timer
+              setStartCounting={setStartCounting}
+              startCounting={startCounting}
+              correctWord={correctWordArray.filter(Boolean).length}
+              setUserInput={setUserInput}
+            />
+          </div>
         </div>
       </div>
     </>
