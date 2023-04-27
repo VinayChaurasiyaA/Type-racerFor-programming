@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
 //https://github.com/gamer-ai/eletypes-frontend/tree/main/src
-import { data } from "./data";
+
 import { person } from "./data";
 import Word from "./components/Word";
 import Timer from "./components/Timer";
@@ -18,7 +18,7 @@ function App() {
   const len =
     Math.floor(Math.random() * useRef(Object.keys(person).length).current) || 1;
 
-  const cloud = useRef(person[len]);
+  const cloud = useRef(person[len].split(" "));
 
   // console.log(len);
 

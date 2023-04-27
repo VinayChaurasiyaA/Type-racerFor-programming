@@ -9,13 +9,13 @@ const Timer = ({
   const [timeElapsed, setTimeElapsed] = useState(0);
   // const [oldTime, setOldTime] = useState();
   const [isActive, setIsActive] = useState(false);
-  const handle = (value) => {
-    console.log(value)
+  const handle = (value, event) => {
+    event.stopPropagation();
+    console.log(value);
     if (value === timeElapsed) {
       // console.log("done")
       setUserInput("Time up!");
       setStartCounting(false);
-      
     }
   };
   const handleClick = () => {
@@ -43,7 +43,7 @@ const Timer = ({
         <span>Speed : {(correctWord / minutes || 0).toFixed(2)} WPM</span>
       </div>
       <div className="buttons">
-        <button onClick={handle(500)} className="btn">
+        <button onClick={(event) => handle(500, event)} className="btn">
           <span
             onClick={handleClick}
             style={{ color: isActive ? "red" : "black" }}
@@ -51,7 +51,7 @@ const Timer = ({
             No limit
           </span>
         </button>
-        <button onClick={handle(30)} className="btn">
+        <button onClick={(event) => handle(30, event)} className="btn">
           <span
             onClick={handleClick}
             style={{ color: isActive ? "red" : "black" }}
@@ -59,7 +59,7 @@ const Timer = ({
             30{" "}
           </span>
         </button>
-        <button onClick={handle(60)} className="btn">
+        <button onClick={(event) => handle(60, event)} className="btn">
           <span
             onClick={handleClick}
             style={{ color: isActive ? "red" : "black" }}
