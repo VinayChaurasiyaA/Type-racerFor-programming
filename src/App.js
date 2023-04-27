@@ -1,18 +1,20 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 //https://github.com/gamer-ai/eletypes-frontend/tree/main/src
 import sound from "./assets/sound.mp3";
+import bgsong from "./assets/bgsong.mp3";
 import { person } from "./data";
 import Word from "./components/Word";
 import Timer from "./components/Timer";
 
 function App() {
+  // const audioRef = useRef(null);
   const [userInput, setUserInput] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
   const [correctWordArray, setCorrectWordArray] = useState([]);
   const [startCounting, setStartCounting] = useState(false);
   const [mode, setMode] = useState("Light");
-  const [sound, setSound] = useState("On");
+  const [sounds, setSounds] = useState("On");
 
   // todo : take random number of id from 1-Object.keys(person).length and then show that data only
 
@@ -20,6 +22,12 @@ function App() {
     Math.floor(Math.random() * useRef(Object.keys(person).length).current) || 1;
 
   const cloud = useRef(person[len].split(" "));
+  useEffect(() => {
+    // play lofi song
+    const audio = new Audio(bgsong);
+    audio.loop = true;
+    audio.play();
+  }, []);
 
   // console.log(len);
 
@@ -28,7 +36,7 @@ function App() {
       setStartCounting(false);
       return;
     }
-    if (sound === "On") {
+    if (sounds === "On") {
       new Audio(sound).play();
     }
     if (!startCounting) {
@@ -58,7 +66,7 @@ function App() {
   };
 
   const toggleSound = () => {
-    sound === "On" ? setSound("Off") : setSound("On");
+    sounds === "On" ? setSounds("Off") : setSounds("On");
   };
   const toggleMode = () => {
     mode === "Light" ? setMode("Dark") : setMode("Light");
@@ -69,6 +77,9 @@ function App() {
         <h2 className={`${mode === "Light" ? "header" : "dark-header"}`}>
           Typing checker
         </h2>
+        {/* <audio ref={audioRef}>
+          <source src="./assets/bgsong.mp3" type="audio/mpeg" />
+        </audio> */}
         <h4>
           Keyboard Sound{" "}
           <span
@@ -76,7 +87,7 @@ function App() {
             onClick={toggleSound}
           >
             {" "}
-            {sound}
+            {sounds}
           </span>
         </h4>
         <div className="switch-box">
