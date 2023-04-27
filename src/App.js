@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
 //https://github.com/gamer-ai/eletypes-frontend/tree/main/src
-
+import sound from "./assets/sound.mp3";
 import { person } from "./data";
 import Word from "./components/Word";
 import Timer from "./components/Timer";
@@ -12,6 +12,7 @@ function App() {
   const [correctWordArray, setCorrectWordArray] = useState([]);
   const [startCounting, setStartCounting] = useState(false);
   const [mode, setMode] = useState("Light");
+  const [sound, setSound] = useState("On");
 
   // todo : take random number of id from 1-Object.keys(person).length and then show that data only
 
@@ -21,12 +22,16 @@ function App() {
   const cloud = useRef(person[len].split(" "));
 
   // console.log(len);
+  
 
   const processInput = (value) => {
     if (activeIndex === cloud.current.length) {
+      new Audio(sound).play();
       setStartCounting(false);
       return;
     }
+    // if(sound === "On") {
+    // }
     if (!startCounting) {
       setStartCounting(true);
     }
@@ -52,6 +57,10 @@ function App() {
       setUserInput(value);
     }
   };
+
+  // const toggleSound = () => {
+  //   sound === "On" ? setSound("Off") : setSound("On");
+  // };
   const toggleMode = () => {
     mode === "Light" ? setMode("Dark") : setMode("Light");
   };
@@ -61,6 +70,16 @@ function App() {
         <h2 className={`${mode === "Light" ? "header" : "dark-header"}`}>
           Typing checker
         </h2>
+        {/* <h4>
+          Keyboard Sound{" "}
+          <span
+            style={{ cursor: "pointer", color: "red" }}
+            onClick={toggleSound}
+          >
+            {" "}
+            {sound}
+          </span>
+        </h4> */}
         <div className="switch-box">
           <div>
             <h4 className={`${mode === "Light" ? "modes" : "dark-mode"}`}>
