@@ -31,7 +31,7 @@ input {
   outline: 0;
   border: 0;
   border-bottom: 1px solid black;
-  font-size: larger;
+  font-size: 3rem;
   color: black;
   font-weight: 400;
 }
@@ -86,6 +86,11 @@ input {
   /* position: absolute; */
   /* display: flex; */
   align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+.switch-box div {
+  margin-right: 1rem;
 }
 .switch {
   position: relative;
@@ -180,7 +185,7 @@ input:checked + .slider:before {
   outline: 0;
   border: 0;
   border-bottom: 1px solid black;
-  font-size: larger;
+  font-size: 2rem;
   color: green;
   font-weight: bold;
 }

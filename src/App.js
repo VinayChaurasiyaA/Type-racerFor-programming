@@ -62,13 +62,17 @@ function App() {
           Typing checker
         </h2>
         <div className="switch-box">
-          <h4 className={`${mode === "Light" ? "modes" : "dark-mode"}`}>
-            Mode: {mode === "Light" ? "Normal" : "Developer"}
-          </h4>
-          <label class="switch">
-            <input type="checkbox" onClick={toggleMode} />
-            <span class="slider round"></span>
-          </label>
+          <div>
+            <h4 className={`${mode === "Light" ? "modes" : "dark-mode"}`}>
+              Mode: {mode === "Light" ? "Normal" : "Developer"}
+            </h4>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" onClick={toggleMode} />
+              <span class="slider round"></span>
+            </label>
+          </div>
         </div>
         <div className="container">
           <div className="word-show">

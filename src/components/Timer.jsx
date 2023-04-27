@@ -10,6 +10,7 @@ const Timer = ({
   // const [oldTime, setOldTime] = useState();
   const [isActive, setIsActive] = useState(false);
   const handle = (value, event) => {
+    event.preventDefault();
     event.stopPropagation();
     console.log(value);
     if (value === timeElapsed) {
@@ -18,7 +19,8 @@ const Timer = ({
       setStartCounting(false);
     }
   };
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.stopPropagation();
     return setIsActive(!isActive);
   };
   useEffect(() => {
@@ -45,7 +47,7 @@ const Timer = ({
       <div className="buttons">
         <button onClick={(event) => handle(500, event)} className="btn">
           <span
-            onClick={handleClick}
+            onClick={(e) => handleClick(e)}
             style={{ color: isActive ? "red" : "black" }}
           >
             No limit
@@ -53,7 +55,7 @@ const Timer = ({
         </button>
         <button onClick={(event) => handle(30, event)} className="btn">
           <span
-            onClick={handleClick}
+            onClick={(e) => handleClick(e)}
             style={{ color: isActive ? "red" : "black" }}
           >
             30{" "}
@@ -61,7 +63,7 @@ const Timer = ({
         </button>
         <button onClick={(event) => handle(60, event)} className="btn">
           <span
-            onClick={handleClick}
+            onClick={(e) => handleClick(e)}
             style={{ color: isActive ? "red" : "black" }}
           >
             60{" "}
