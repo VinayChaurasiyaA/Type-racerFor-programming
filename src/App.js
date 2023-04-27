@@ -22,16 +22,15 @@ function App() {
   const cloud = useRef(person[len].split(" "));
 
   // console.log(len);
-  
 
   const processInput = (value) => {
     if (activeIndex === cloud.current.length) {
-      new Audio(sound).play();
       setStartCounting(false);
       return;
     }
-    // if(sound === "On") {
-    // }
+    if (sound === "On") {
+      new Audio(sound).play();
+    }
     if (!startCounting) {
       setStartCounting(true);
     }
@@ -58,9 +57,9 @@ function App() {
     }
   };
 
-  // const toggleSound = () => {
-  //   sound === "On" ? setSound("Off") : setSound("On");
-  // };
+  const toggleSound = () => {
+    sound === "On" ? setSound("Off") : setSound("On");
+  };
   const toggleMode = () => {
     mode === "Light" ? setMode("Dark") : setMode("Light");
   };
@@ -70,7 +69,7 @@ function App() {
         <h2 className={`${mode === "Light" ? "header" : "dark-header"}`}>
           Typing checker
         </h2>
-        {/* <h4>
+        <h4>
           Keyboard Sound{" "}
           <span
             style={{ cursor: "pointer", color: "red" }}
@@ -79,7 +78,7 @@ function App() {
             {" "}
             {sound}
           </span>
-        </h4> */}
+        </h4>
         <div className="switch-box">
           <div>
             <h4 className={`${mode === "Light" ? "modes" : "dark-mode"}`}>
